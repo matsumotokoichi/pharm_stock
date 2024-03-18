@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}在庫一覧{% endblock %}
+{% block contents %}
+
+
+
+<div class="p-4 m-10">
+<h2>在庫一覧　<a href="{% url 'stock:add_stock' %}" class="btn btn-success my-2">在庫を追加する</a></h3>
+
+{% comment %} CATEGORY = (('1', '慢性疾患'), ('2', '感冒薬'), ('3', '抗アレルギー薬'), ('4','その他'))  {% endcomment %}
+
+<form method="get" class="p-4 m-10 bg-light border border-dark rounded form-group">
+<h5>検索ボックス</h5>
+<h6>商品名: <input type="text" name="medicine_name" value="{{ medicine_name }}"/></h6>
+  <h6>分類で表示:
+     慢性疾患<input type="radio" name="category_name" value="1" >
+     感冒薬類<input type="radio" name="category_name" value="2" >
+     漢方薬<input type="radio" name="category_name" value="3" >
+     その他<input type="radio" name="category_name" value="4" >
+  </h6>
+  <input type="submit" value="検索" class="btn btn-secondary my-2">
+
+</form>
+
+<hr>
+<table class="table table-bordered table-hover">
+<thead>
+  <tr>
+     <td><strong>医薬品名</strong></td>
+     <td><strong>在庫数</strong></td>
+     <td><strong>分類</strong></td>
+     <td><strong>メモ</strong></td>
+     <td><strong>編集画面へ</strong></td>
+  </tr>
+</thead>
+
+{% for item in object_list %}
+<tr>
+    <td><a href="{% url 'stock:detail_stock' item.pk %}">{{ item.name }}</td>
+    <td>{{ item.stock }}</td>
+    <td>{{ item.get_category_display }}</td>
+    <td>{{ item.memo }}</td>
+    <td><a href="{% url 'stock:update_stock' item.pk %}">詳細</a></td>
+</tr>
+{% endfor %}
+</div>
+{% endblock %}

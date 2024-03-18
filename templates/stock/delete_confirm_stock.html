@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}在庫削除確認{% endblock %}
+{% block contents %}
+<form method="post" class="py-5 text-center container">
+{% csrf_token %}
+<h3>以下の在庫を削除してよろしいですか？</h3>
+<h3>削除対象 : {{object.name}}</h3>
+<button type='submit' class="btn btn-success my-2">削除する</button>
+<a href="{% url 'stock:update_stock' object.pk %}" class="btn btn-secondary my-2">編集画面に戻る</a>
+
+</form>
+{% endblock %}

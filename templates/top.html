@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}トップページ{% endblock %}
+
+    {% block contents %}
+      <!-- タイトルとナビゲーションボタン -->
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <!-- タイトルと本文 -->
+            <h1 class="fw-light">Pharma-Stock</h1>
+            <p class="lead text-muted">
+                会員登録がまだの方は会員登録をしてください<br>
+                {% comment %} 初めての方は、<a href="mailto:mk1.kko1221@gmail.com">管理者</a>まで薬局・病院コード発行希望の連絡をお願いいたします。 {% endcomment %}
+            </p>
+
+            <p>
+              <!-- ナビゲーションボタン -->
+                {% if user.is_authenticated %}
+                <a href="{% url 'chat:chat_room' %}"
+                   class="btn btn-secondary my-2">チャット画面へ</a>
+                <a href="{% url 'stock:list_stock' %}" class="btn btn-secondary my-2"
+                         >在庫確認</a>
+                <!-- ログイン状態ではない場合のボタン -->
+                {% else %} 
+                <a href="{% url 'accounts:signup' %}"
+                   class="btn btn-success my-2">会員登録</a>
+                  <a href="{% url 'login' %}"
+                   class="btn btn-secondary my-2">登録済みの方はログイン</a>
+                {% endif %}
+
+            </p>
+          </div>
+        </div>
+      </section>
+    {% endblock %}

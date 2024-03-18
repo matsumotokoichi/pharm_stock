@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}プロフィール{% endblock %}
+
+      {% block contents %}
+
+  <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+    <h3>会員情報を編集する</h3>
+    {% csrf_token %}
+    {% for error in form.errors.values %}
+      {{ error }}
+    {% endfor %}<br>
+    <label><h6>ユーザー名 : </label>{{form.username}}</h6>
+    <label><h6>メールアドレス : </label>{{form.email}}</h6>
+    <label><h6>所属機関名 : </label>{{ form.institution_name}}</h6><br>
+    <input type="submit" value="変更" class="btn btn-success mt-2">
+    <a href="{% url 'accounts:user_profile' %}" class="btn btn-secondary mt-2">会員情報ページに戻る</a>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}ルーム削除画面{% endblock %}
+{% block contents %}
+<form method="post" class="py-5 text-center container">
+{% csrf_token %}
+<h3>以下のルームを削除してよろしいですか？</h3>
+<h3>削除対象 : {{object.name}}</h3>
+<button type='submit' class="btn btn-success my-2">削除する</button>
+<a href="{% url 'chat:add_message' object.pk %}" class="btn btn-secondary my-2">ルームに戻る</a>
+
+</form>
+{% endblock %}

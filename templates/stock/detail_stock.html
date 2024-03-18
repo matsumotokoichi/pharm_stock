@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}在庫削除{% endblock %}
+{% block contents %}
+<div class="p-4 m-4 bg-light border border-dark rounded form-group">
+<h3 class="text-dark">医薬品名 : {{ object.name }}</h3>
+<h6>在庫数 : {{ object.stock }}</h6>
+<h6>分類 : {{ object.get_category_display }}</h6>
+<h6>メモ : {{ object.memo }}</h6>
+<h6>更新日時 : {{ object.update_at}}</h6>
+</h5>
+<div class="mt-3">
+<a href="{% url 'stock:list_stock' %}" class="btn btn-secondary my-2">戻る</a>
+</div>
+</div>
+
+{% endblock %}

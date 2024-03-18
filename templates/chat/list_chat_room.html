@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block title %}チャットルーム一覧{% endblock %}
+{% block contents %}
+
+
+
+
+<div class="p-3 m-10">
+<hr>
+<h2>参加中のルーム一覧</h2>
+<a href="{% url 'chat:add_chat_room' %}" class="btn btn-success my-2">新しくルームを作成する</a>
+
+<table class="table table-bordered table-hover">
+<thead>
+  <tr>
+     <td><strong>ルーム名</strong></td>
+     <td><strong>作成者</strong></td>
+     <td><strong>参加者</strong></td>
+  </tr>
+</thead>
+
+
+{% for room in object_list %}
+<tr>
+    <td><a href="{% url 'chat:add_message' room.id %}">{{ room.name }}</a></td><br>
+    <td>{{ room.user_code }}</td><br>
+    <td>{{ room.recipient_code }}</td>
+    <hr>
+</tr>
+{% endfor %}
+
+
+{% endblock %}

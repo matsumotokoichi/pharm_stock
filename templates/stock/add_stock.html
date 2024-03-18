@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}在庫追加画面{% endblock %}
+{% block contents %}
+    <form method="POST" class="p-4 m-4 bg-light border border-dark rounded form-group">
+    <h3>在庫追加画面</h3>
+    {% csrf_token %}
+    <h6>{{ form.as_p }}<h6>
+    <input type='submit' value='在庫を追加する' class="btn btn-success my-2">
+    <a href="{% url 'stock:list_stock' %}" class="btn btn-secondary my-2">戻る</a>
+    </form>
+{% endblock %}

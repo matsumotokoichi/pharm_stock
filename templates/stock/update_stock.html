@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}編集画面{% endblock %}
+{% block contents %}
+    <form method="POST" class="p-4 m-4 bg-light border border-dark rounded form-group">
+        <h3>在庫編集画面</h3>
+
+    {% csrf_token %}
+    <h6>{{ form.as_p }}</h6>
+    <input type='submit' value='編集する' class="btn btn-success my-2">
+    <a href="{% url 'stock:delete_stock' object.pk %}" class="btn btn-success my-2" >削除はこちら</a>
+    <a href="{% url 'stock:list_stock' %}" class="btn btn-secondary my-2">戻る</a>
+    </form>
+{% endblock %}

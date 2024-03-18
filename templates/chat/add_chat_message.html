@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}メッセージ追加{% endblock %}
+
+{% block contents %}
+<div class="p-4 m-10">
+<h3>{{ room.name }}</h3>
+<h5>参加者 : {{room.user_code}}, {{room.recipient_code}}</h5>
+<a href="{% url 'chat:chat_room' %}" class="btn btn-secondary my-2">ルーム一覧に戻る</a>
+
+{% if show_delete_link %}
+<a href="{% url 'chat:delete_chat_room' room.pk  %}" class="btn btn-secondary my-2">ルームを削除する</a>
+{% endif %}
+
+</div>
+<hr>
+{% if user.is_authenticated %}
+    <form method="POST" class="p-4 m-4 border border-dark bg-light ">
+    {% csrf_token %}
+    {{ message_form.message }}<br>
+    <input type="submit" value="メッセージ送信" class="btn btn-success my-2">
+    </form>
+  </div>
+  {% endif %}
+<div>
+
+  {% for messages in list_message %}
+<div class="card bg-light p-1 m-4 border border-dark">
+  <div class="card-header">
+    <strong>送信者 : {{ messages.sender }}</strong>　　　送信時刻 : {{ messages.create_at | date:"y/m/d H:i" }}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ messages.message }}</p>
+  </div>
+</div>
+    {% endfor %}
+
+
+  {% endblock %}

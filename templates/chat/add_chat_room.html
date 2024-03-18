@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}ルーム作成{% endblock %}
+{% block contents %}
+	<form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+	{% csrf_token %}
+	
+    <h3>ルームを作成する</h3>
+    {% csrf_token %}
+    </h3>
+    <h6>{{ form.as_p }}</h6>
+    </h3>
+    <input type='submit' value='作成する' class="btn btn-success my-2">
+    <a href="{% url 'chat:chat_room' %}" class="btn btn-secondary my-2">戻る</a>
+	
+
+
+	</form>
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}プロフィール{% endblock %}
+
+      {% block contents %}
+      <div class="p-4 m-4 bg-light border border-success rounded form-group">
+        <h3>会員情報</h3>
+        <h6><label>ユーザー名:</label>{{ request.user.username }}</h6>
+        <h6><label>ログインID:</label>{{ request.user.email }}</h6>
+        <h6><label>所属機関:</label>{{ request.user.institution_name }}</h6>
+        <h6><label>会員情報更新日時:</label> {{request.user.update_at}}</h6>
+          <a href="{% url 'top' %}" class="btn btn-success mt-2">トップページ</a>
+          <a href="{% url 'accounts:user_change' user.pk %}" class="btn btn-secondary mt-2">会員情報を編集する</a>
+          <a href="{% url 'accounts:user_change_password' %}" class="btn btn-secondary mt-2">パスワードの変更はこちら</a>
+
+      </div>
+
+      {% endblock %}
