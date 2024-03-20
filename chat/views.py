@@ -87,7 +87,7 @@ def AddMessageView(request, id):
  
 
 class DeleteRoomView(LoginRequiredMixin, DeleteView):
-    template_name = 'chat/delete_confirm_chat_room.html.'
+    template_name = 'chat/delete_confirm_chat_room.html'
     model = Room
     success_url = reverse_lazy('chat:chat_room')
     

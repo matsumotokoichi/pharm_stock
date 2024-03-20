@@ -147,6 +147,6 @@ class UpdateStockView(LoginRequiredMixin, UpdateView):
 
 
 class DeleteStockView(LoginRequiredMixin, DeleteView):
-    template_name = 'stock/delete_confirm_stock.html.'
+    template_name = 'stock/delete_confirm_stock.html'
     model = Medicine
     success_url = reverse_lazy('stock:list_stock')
