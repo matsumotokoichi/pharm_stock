@@ -34,7 +34,7 @@ class UserManager(BaseUserManager):
     
     def create_superuser(self, username, email, password=None):
     # 必要なCategoryインスタンスを作成または取得
-        code = InstitutionCode.objects.create(institution_name="管理者", code="P9999")
+        code = InstitutionCode.objects.create(institution_name="管理者", code="P")
         user = self.model(
             username=username,
             email=email,

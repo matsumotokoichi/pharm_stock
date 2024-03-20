@@ -84,7 +84,6 @@ class UserChangeView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         user_data = form.save(commit=False)
-        # stock_data.institution_code_fk = self.request.user.institution_code #type:ignore エラー問題無
         user_data.user = self.request.user
         form.instance.create_at = datetime.now()
         form.instance.update_at = datetime.now()
